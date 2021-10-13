@@ -1,0 +1,61 @@
+
+minikube status
+
+minikube start
+
+
+
+##Criar executando arquivo por arquivo
+
+kubectl create -f configuracoes.yaml 
+
+##Executar na pasta para que o kubectl se encarregue de localizar os arquivos yaml e executa-los
+
+kubectl create -f wordpress
+
+kubectl delete -f wordpress
+
+## -f é de file
+
+##Listando por secrets
+
+kubectl get secret
+
+##Listando deployments
+
+kubectl get deployment
+
+##Listando por Persistent Volume Claim   PVC
+##Reivindicação de volume persistente algo assim
+
+kubectl get pvc
+
+##Listando os pods 
+
+kubectl get pods
+
+##Analisando erros nas instancias existentes
+
+kubectl logs nome-do-pod
+
+##Para ALTERAR somente arquivo especifico que sofreu as alterações rodar comando
+
+kubectl apply -f wordpress\wordpress-deployment.yml
+
+##Para AlTERAR APLICAR a todos os files
+
+kubectl apply -f wordpress(Pasta alvo)
+
+##Listando as Services criadas
+
+kubectl get service
+
+///
+
+Configurar a PORTA e URL para fazer acesso (MiniKube precisa dessa configuração)
+(QUANDO ESTIVER NA AWS NÃO É NECESSARIO FAZER ESSE PASSO)
+
+(PRECISA SER FEITO QUANDO ESTÁ EM AMBIENTE DE DESENVOLVIMENTO)
+minikube service wordpress-service --url
+
+//

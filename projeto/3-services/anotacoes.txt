@@ -1,0 +1,42 @@
+A Service é responsavel por gerenciar as camadas de rede dentro do kubernetes
+Esse gerenciamento se diz como os deployments se comunicam entre eles e como consegue comunicar o deployment
+com serviços externos na internet.
+
+Configurar 2 services 
+
+1- service para comunicacao do banco de dados entre a aplicação WEB.
+
+Para ligar os deployments no service precisa do valor no Selector matchesLabels wordpress-deployment
+da aplicacaoDeployment para inserir no spec: selector: app: valor
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: { valor que esta inserido na aplicacaoDeployment.yaml em Selector matchesLabels }
+  ports:
+  - port: <Port> { Porta que vai rodar a aplicação }
+    targetPort: <Target Port>  { não vai ser utilizado - para criar uma outra porta para atuar a aplicacao/conexao mais ou menos isso }
+
+
+
+----
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-service
+spec:
+  type: LoadBalancer { Responsavel por fazer a comunicacao com o mundo externo - fazer o balanceamento da carga } 
+  selector:
+    app: wordpress-deployment
+  ports:
+  - port: 80
+
+
+////
+
+
+

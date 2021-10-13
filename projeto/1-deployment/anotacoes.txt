@@ -1,0 +1,47 @@
+O Deployment é responsavel por fazer gerenciamento dos pods.
+
+Replica-sets é responsavel por subir e manter funcionando as aplicações(POD).
+
+
+CRIANDO OS DEPLOYMENTS
+
+1- para o banco. 
+
+mysql-deployment.yaml
+
+&& com os plugins instalados do kubernetes digite: deploy ele vai completar criando o esqueleto do arquivo.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp { nome que sera listado no kubernetes }
+spec:
+  replicas: { Não vem junto essa configuração - aqui é informado quantas copias aplicação PODS vai ter - Por padrão o deployment já possui uma replica }
+  selector:
+    matchLabels:
+      app: myapp { Nome declarado que será utilizado para trabalhar junto com outras configurações }
+  template:
+    metadata:
+      labels:
+        app: myapp { Nome dado ao template } 
+    spec:
+      containers:
+      - name: myapp  { Nome do Container - imagem utilizada - recursos de hardware - porta em execução }
+        image: <Image>
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: <Port>
+        env:                      { Não vem configurado foi adicionado a mais para declarar variaveis de ambiente }
+          - name: MYSQL_ROOT_PASSWORD
+            value: wordpress-2020
+
+
+2- para a aplicação web.
+
+
+//
+
+

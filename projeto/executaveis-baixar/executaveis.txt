@@ -1,0 +1,6 @@
+kubectl
+
+minikube-windows-amd64
+
+virtualBox
+

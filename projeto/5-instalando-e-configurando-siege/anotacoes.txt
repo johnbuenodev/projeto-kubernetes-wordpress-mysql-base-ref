@@ -1,0 +1,19 @@
+
+siege windows - 3.0.5 github
+
+baixar arquivo descompactar e deixar a pasta siege-windows no c://
+
+Criar variavel de ambiente no path.
+
+Testando:
+
+no CMD ADMIN
+
+ siege
+
+
+##############
+
+ CONFIGURANDO AUTOSCALE E APRENDER A ESTRESSAR A APLICAÇÃO PARA TESTES
+
+

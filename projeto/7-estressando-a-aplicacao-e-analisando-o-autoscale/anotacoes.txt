@@ -1,0 +1,32 @@
+##Comando para identificar as metricas
+
+(Verifica a quantidade de CPU e a quantidade de memoria utilizada)
+
+kubectl top pods
+
+
+##Listar os serviços ativos com seus tipos - portas - tempo ativas
+
+kubectl get svc
+
+
+##Expor a url de execucao do Servico/aplicação para acesso
+
+minikube service wordpress-service --url
+
+///http://127.0.0.1:55620
+
+##Estressando a aplicacao utilizando o siege
+##Comando
+
+//  c é o numero de requisições    t é a fração de tempo que vai fazer as requisições
+
+siege c20 t60s URL-QUE-VAI-SER-ACESSADA EXEMPLO: http://127.0.0.1:55620
+
+siege c20 t60s http://127.0.0.1:55620
+
+
+http://127.0.0.1:58075/wp-login.php
+
+
+siege c20 t60s http://127.0.0.1:58075/wp-login.php

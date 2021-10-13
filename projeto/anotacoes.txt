@@ -1,0 +1,96 @@
+
+instalando/configurando o kubectl
+
+
+kubernetes minikube
+
+
+https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/
+
+https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows
+
+download executavel
+
+colocar o executavel kubectl no C:// kubectl
+
+criando variavel de ambiente para executar comandos
+
+C:\kubectl
+
+testando se criamos a variavel corretamente
+
+CMD ADMIN
+
+kubectl version --client
+
+/////
+
+instalando e configurando o Minikube
+
+https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/
+
+instalar o virtual box
+
+depois: Instalar manualmente o minikube
+
+Install Minikube via direct download
+To install Minikube manually on Windows, download minikube-windows-amd64 => LINK
+
+https://github.com/kubernetes/minikube/releases/tag/v1.23.2
+
+renomear o arquivo minikube-windows-amd64 para minikube e ADD no C:// minikube
+
+
+startando o minikube
+
+CMD ADMIN
+
+//para instalar criar o cluster
+
+minikube start
+
+//para verificar se esta rodando 
+
+minikube status
+
+///
+
+instalar o plugins Kubernetes microsoft no VISUAL CODE
+
+e YAML red hat
+
+///
+
+
+###Configurando a aplicação 
+
+Criando um deployment**
+
+
+
+
+Criando secrets e volumes**
+
+
+
+
+Criando Services**
+
+
+
+
+Aplicando configuracoes e comandos kubectl**
+
+
+
+
+
+
+###Escalando a Aplicação
+
+
+
+
+
+
+

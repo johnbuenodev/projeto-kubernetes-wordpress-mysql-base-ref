@@ -1,0 +1,97 @@
+
+Secrets - ele existe dentro do kubernetes para arquivar senhas valores de forma criptografada e segura.
+
+Criado o arquivo configuracoes.yaml que armazenara as chaves//senhas da aplicação 
+pode ter um unico arquivo ou arquivos separados para cada senha ou variaveis de ambientes.
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: Opaque
+stringData:
+  password: wordpress-2021
+
+
+inserir no arquivo da aplicação.yaml o caminho para acessar o password contido em configuracoes.yaml
+
+  aplicacao.yaml
+
+  env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+               secretKeyRef:
+                  name: mysql-secret { Nome do metadata - name que está no arquivo configuracoes.yaml }
+                  key: password {key password que esta no arquivo configuracoes.yaml }
+
+
+
+////
+
+
+
+Volumes - Serve para armazenar dados de forma segura em disco, para as informações permaneçam integras.
+
+criado volumes em aplicações.
+
+separado os dados no arquivo de configuracoes.yaml
+
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc   { Nome do volume }
+spec:
+  accessModes:
+    - ReadWriteMany { Tipos de acessos disponiveis }
+  resources:
+    requests:
+      storage: 1Gi  { Uso de recursos de hardware pra o banco }
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wordpress-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+
+///
+
+Inserir as configuracoes dos volumes nos arquivos de deployment
+
+
+spec:
+      containers:
+      - name: mysqlBD-image
+        image: mysql:5.6
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+               secretKeyRef:
+                  name: mysql-secret
+                  key: password
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql-volume
+      volumes:   { Declarado os volumes }
+       - name: mysql-volume { nome do volume em volumeMounts }
+         persistentVolumeClaim:
+           claimName: mysql-pvc { name da Configuração no arquivo configuracoes.yaml para o mysql }
+
+
+///

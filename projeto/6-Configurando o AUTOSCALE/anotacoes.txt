@@ -1,0 +1,46 @@
+
+O HPA Horizontal Pod Autoscaler é responsavel por fazer as configurações que definem o
+Scale, que é configurado na Camada de Deployment que é responsavel por expandir os Pods ou diminuir.
+
+
+##VERIFICAR O STATUS DO minikube
+
+CMD 
+
+minikube status
+
+##CASO ESTEJA STOPPED PARADO ATIVAR ELE NOVAMENTE
+
+minikube start
+
+##ATIVAR O MINIKUBE PARA COLETAR METRICAS
+(Exemplo: Coletar uso de CPU usado nos processos )
+ 
+minikube addons list
+
+##utilizar o metrics-server
+
+minikube addons enable metrics-server
+
+##Para verificar rode novamente o comando de listar
+e verificar o que está habilitado no kubernetes
+
+minikube addons list
+
+############
+
+CONFIGURANDO O AUTOSCALE
+
+##Listar os deployments primeiro
+
+kubectl get deployment
+
+kubectl autoscale deployment nome-deployment --cpu-percent=20 --min=1 --max=20
+
+kubectl autoscale deployment nome-deployment --cpu-percent=20 --min=1 --max=20
+
+##Para verificar o HPA horizontal Pods Autoscale
+
+kubectl get hpa
+
+

@@ -1,0 +1,15 @@
+
+Ultima etapa depois de aplicar a criacao dos deployments, configuracoes e services.
+
+      - containerPort: 80
+        env:
+          - name: WORDPRESS_DB_HOST
+            value: mysql-service {  Neste ponto dentro do deployments é necessario referenciar o service e kubectl se encarregará de fazer a conexao entre aplicacoes atraves da service buscando pelo name na service em service-wordpress }
+          - name: WORDPRESS_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+
+
+///
+
+
